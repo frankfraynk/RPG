@@ -20,19 +20,31 @@ class Goblin: #simple enemy class has simple attributes
 
 GoblinIG=Goblin("Goblin")
 
+class Attack:
+    def __init__(self,name,basedmg,dmgtype):
+        self.name = name
+        self.basedmg = basedmg
+        self.dmgtype = dmgtype
+        self.sizebonus = enemy.size * 0.2
+        self.dmg = basedmg + enemy.damage + self.sizebonus
+           
 class Zombie:#very similar to the Goblin class with different variables
     def __init__(self, name):
         self.name = name
         self.maxhealth = 70
         self.health = self.maxhealth
-        self.attack = 7
+        self.damage = 7
+        self.Attack("Slam",6,"blunt")
+            
         self.goldgain = 15
 ZombieIG=Zombie("Zombie")
+
 
 
 def Fight():#Not completed yet. IT only displays the names
     print(PlayerIG.name + " vs "+ enemy.name)
     while PlayerIG.health >= 1:
+        enemy.size = random.randint(1,3)
         PlayerIG = PlayerIG.health-enemy.attack
         enemy.health = enemy.health-PlayerIG.attack
         print(PlayerIG.health)
@@ -47,6 +59,7 @@ def Prefight():#Decids what ememy to fight
 
     else:
         enemy= ZombieIG
+        enemy.size = random.randint(1,3)
     Fight()
 
 
@@ -94,6 +107,7 @@ def main():#Gives options to the player. Still need a save feature
         main()
 
 main()#Starts the game
+
 
 
 
