@@ -1,22 +1,22 @@
 import random
-from typing import List
-from src import rpgplayer, fight, rpgenemy
+from src
 import numpy
 
 
 class wMap:
-    def __init__(self,x,y,player):
+    def __init__(self, x, y, player):
         self.y = y
         self.x = x
         self.player = player
+
     def drawMap(self):
+
         map = numpy.array([[random.randint(1,3) for i in range(self.x)]for j in range(self.y)])
         self.map = map
         map[0][len(map)] = 0
-        px,py = numpy.where(map == 0)
-        self.px = px
-        self.py = py
-        print(px,py)
+        px, py = numpy.where(map == 0)
+
+        print(px, py)
         for j in range(self.x):
             print()
             print()
@@ -25,7 +25,9 @@ class wMap:
                     print('~', end="     ")
                 else:
                     print('V', end="     ")
-    def movePlayer(direction):
+
+    def movePlayer(self,direction):
+
         self.map[self.px][self.py] = '/'
         if direction == 'west' or direction == 'w':
             enc = self.map[self.px-1][self.py]
