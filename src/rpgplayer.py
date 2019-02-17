@@ -1,4 +1,4 @@
-from src.items import Inventory
+from src.items import Inventory,Weapon,Armor
 
 class Player: #Create a class for the player with different attributes
     def __init__(self, name,race,job):
@@ -8,39 +8,40 @@ class Player: #Create a class for the player with different attributes
       self.speed = 10
       self.stats = {'strength':self.strength,'fortitude':self.fortitude,'speed':self.speed}
       stat_buy(self)
-      if self.race == ('minotaur' or 'm'):
+      if race == 'minotaur' or race == 'm':
         self.race = 'Minotaur'
         self.size = 2
         self.fortitude +=2
         self.strength +=1
-      elif self.race == ('goblin' or 'g'):
+      elif race == 'goblin' or race == 'g':
         self.race = "Goblin"
         self.size = 1
-        self.fortitude += 2
-        self.strength +=1
-      elif self.race == ('wolfman' or 'w'):
+        self.stats['fortitude'] += 2
+        self.stats['speed'] +=1
+      elif race == 'wolfman' or race =='w':
         self.race = "Wolfman"
         self.size = 2
-        self.strength +=2
-        self.fortitude +=1
-      elif self.race == ('darkelf' or 'd'):
+        self.stats['strength'] += 2
+        self.stats['fortitude'] +=1
+      elif race == 'darkelf' or race == 'd':
         self.race = "Dark Elf"
         self.size = 1
-        self.speed += 3
-      elif self.race == ('ogre' or 'o'):
+        self.stats['speed'] += 3
+      elif race == 'ogre' or race == 'o':
         self.race = "Ogre"
         self.size = 2
         self.fortitude +=3
-      if self.job == ('warrior' or 'w'):
-        wsaxe = 
-        self.playerinventory.add(items.Weapon('Cutting Axe',10, self.size, 'Slash', 's'))
-        self.playerinventory.add(items.Armor('Leather Tunic', 10, self.size,2))
-        self.playerinventory.wslot 
+      if job == 'warrior' or job == 'w':
+        self.job = 'Warrior'
+        self.playerinventory.add(Weapon('Cutting Axe',10, self.size, 'Slash', 's'))
+        self.playerinventory.add(Armor('Leather Tunic', 10, self.size,2))
+        bab = 2
+
 
       self.name = name
       self.maxhealth = 1001
       self.health = self.maxhealth
-      self.attack = self.strength + self.bab
+      self.attack = self.strength
       self.attacks = []
       self.gold = 100
       self.pots = 0
@@ -85,18 +86,18 @@ def stat_buy(self):
 
     else:
       self.stats[p1mod] += 1
-      print(p2mod, "has been raised by two, totalling", self.stats[p2mod])
+      print(p1mod, "has been raised by two, totalling", self.stats[p1mod])
 
   err = True
   while(err):
     err = False
     m1mod = input('To which ability would you like to add the -1 modifier?')
 
-    if m1mod == (p1mod or p2mod) or m1mod not in self.stats.keys():
+    if m1mod == p1mod or m1mod == p2mod or m1mod not in self.stats.keys():
       print('There has been an error in your selection, try again! (You can\'t apply more than one modifier to a particular ability)')
       err = True
       continue
     else:
       self.stats[m1mod] -= 1
-    print(p2mod, "has been raised by two, totalling", self.stats[p2mod])
+    print(m1mod, "has been raised by two, totalling", self.stats[m1mod])
 

@@ -92,7 +92,7 @@ class Inventory:
                     print(ifs.name, "has been equipped!")
                     self.player.attacks.append(ifs.attack)
                     self.storage.pop(self.storage.index(ifs))
-                if type(ifs) is Armor:
+                elif type(ifs) is Armor:
                     if self.aslot.name != "Cloth":
                         self.unequip(self.aslot)
                     self.aslot = ifs

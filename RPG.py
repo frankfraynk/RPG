@@ -13,8 +13,8 @@ clear = lambda: os.system('cls')
 def start1():  # #Shows the player his stats
     clear()
     rpgplayer.player_health(PlayerIG)
-    print(PlayerIG.name + ", the" + PlayerIG.race +'!\nStrength: ' + PlayerIG.stats['strength'] + "\nSpeed: " +
-     PlayerIG.stats['speed'] + '\nFortitude: ' + PlayerIG.stats['fortitude'])
+    print(PlayerIG.name + ", the " + PlayerIG.race +' ' + PlayerIG.job + '!\nStrength: ' + str(PlayerIG.stats['strength']) + "\nSpeed: " +
+     str(PlayerIG.stats['speed']) + '\nFortitude: ' + str(PlayerIG.stats['fortitude']))
     option = input("1.) Fight\n2.) Shop\n3.) Inventory\n4.) Load\n5.)Exit\n")
     if option == "1":
         fight.Prefight(PlayerIG)
